@@ -1,4 +1,7 @@
 const storeInSessionStorage = ({ userData }) => {
   window.sessionStorage.setItem('userData', JSON.stringify(userData));
 };
-export default storeInSessionStorage;
+const storeLocalStorage = ({token}) => {
+  localStorage.setItem('token',token)
+}
+export  {storeInSessionStorage,storeLocalStorage};

@@ -1,6 +1,8 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+
+import {storeLocalStorage} from '../../../utils/sessionStorage'
 
 
 
@@ -33,12 +35,12 @@ import CircularLoader from '../../../ui-component/loader/CircularLoader';
 export default function AuthLogin() {
   const theme = useTheme();
   const [checked, setChecked] = useState(true);
-   const [showSuccessToast, setShowSuccessToast] = useState(false);
+  const [showSuccessToast, setShowSuccessToast] = useState(false);
   const [showErrorToast, setShowErrorToast] = useState(false);
   const { register, handleSubmit, formState: { errors } } = useForm()
   const { mutate, isError, isSuccess, isLoading } = useLoginUser()
 
-   //naviagate to login
+  //naviagate to login
   const navigate = useNavigate()
 
   const [showPassword, setShowPassword] = useState(false);
@@ -59,10 +61,16 @@ export default function AuthLogin() {
     }
     mutate(loginData, {
       onSuccess: (data) => {
-         setShowSuccessToast(true);
+        console.log("login data",data?.data.tokens);
+        console.log("login data",data?.tokens);
+        // storeLocalStorage(data?.data.tokens)
+        localStorage.setItem('token',data?.data.tokens)
+        setShowSuccessToast(true);
+        navigate('/dashboard')
+        
       },
       onError: (err) => {
-            setShowErrorToast(true);
+        setShowErrorToast(true);
       }
     })
   }

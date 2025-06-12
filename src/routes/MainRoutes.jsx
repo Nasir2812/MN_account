@@ -7,26 +7,29 @@ import AuthGuard from './authGuard';
 import { Navigate } from 'react-router';
 
 // dashboard routing
-const DashboardDefault = Loadable(lazy(() => import('views/dashboard/Default')));
+const ErrorPage =  Loadable(lazy(()=> import('../routes/ErrorBoundary') ))
+const Dashboard = Loadable(lazy(() =>import('../views/dashboard/Default')))
+
 
 
 // ==============================|| MAIN ROUTING ||============================== //
 
 const MainRoutes = {
-  path: '/MN_Account/',
+  path: '/',
   element: (
     <AuthGuard>
       <MainLayout />
     </AuthGuard>
   ),
+   errorElement: <ErrorPage />, 
   children: [
-   {
-    path:'',
-    element:<Navigate to= '/register' replace/>
-   },
-   {
+    {
       path: 'dashboard',
-      element: <DashboardDefault />
+      element: <Dashboard />
+    },
+     {
+      path: '',  
+      element: <Navigate to="dashboard" replace />
     }
   ]
 };

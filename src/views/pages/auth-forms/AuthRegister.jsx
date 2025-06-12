@@ -3,7 +3,7 @@ import { Link, Links, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
 import userRegister from '../../../reactQueryHook/auth/userRegister'
-import storeInSessionStorage from '../../../utils/sessionStorage'
+import {storeInSessionStorage} from '../../../utils/sessionStorage'
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
