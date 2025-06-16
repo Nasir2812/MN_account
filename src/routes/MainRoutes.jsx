@@ -7,8 +7,9 @@ import AuthGuard from './authGuard';
 import { Navigate } from 'react-router';
 
 // dashboard routing
-const ErrorPage =  Loadable(lazy(()=> import('../routes/ErrorBoundary') ))
-const Dashboard = Loadable(lazy(() =>import('../views/dashboard/Default')))
+const ErrorPage = Loadable(lazy(() => import('../routes/ErrorBoundary')))
+const Dashboard = Loadable(lazy(() => import('../views/dashboard/Default')))
+const User = Loadable(lazy(() => import('../views/pages/User Mangement/User')))
 
 
 
@@ -21,15 +22,19 @@ const MainRoutes = {
       <MainLayout />
     </AuthGuard>
   ),
-   errorElement: <ErrorPage />, 
+  errorElement: <ErrorPage />,
   children: [
     {
       path: 'dashboard',
       element: <Dashboard />
     },
-     {
-      path: '',  
+    {
+      path: '',
       element: <Navigate to="dashboard" replace />
+    },
+     {
+      path: 'user',
+      element: <User />
     }
   ]
 };
