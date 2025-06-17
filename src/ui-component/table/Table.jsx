@@ -1,7 +1,9 @@
 import { Paper } from '@mui/material'
+import { DataGrid } from '@mui/x-data-grid';
+
 import React from 'react'
 
-const Table = ({ rows = [], columns = [], height = 400, pageSize = 5, checkboxSelection = true }) => {
+const Table = ({ rows = [], columns = [], height=380 , pageSize = 5, checkboxSelection = true }) => {
 
     const paginationModel = { page: 0, pageSize };
     return (
