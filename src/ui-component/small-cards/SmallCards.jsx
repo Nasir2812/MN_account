@@ -9,13 +9,12 @@ import {
 } from '@mui/material';
 import TableChartOutlinedIcon from '@mui/icons-material/TableChartOutlined';
 
-const SmallCards = ({ bgColor = 'secondary.dark' ,item='0',role='worker'}) => {
+const SmallCards = React.memo(({ bgColor = 'secondary.dark', item = '0', role = 'worker' }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const resolvedBgColor =
     theme.palette?.[bgColor.split('.')[0]]?.[bgColor.split('.')[1]] || bgColor;
-
 
   return (
     <Card
@@ -54,7 +53,6 @@ const SmallCards = ({ bgColor = 'secondary.dark' ,item='0',role='worker'}) => {
         }
       }}
     >
-      {/* Avatar + Icon */}
       <Avatar
         variant="rounded"
         sx={{
@@ -68,17 +66,16 @@ const SmallCards = ({ bgColor = 'secondary.dark' ,item='0',role='worker'}) => {
         <TableChartOutlinedIcon fontSize="inherit" />
       </Avatar>
 
-      {/* Text Content */}
       <Box>
         <Typography variant="h3" sx={{ color: '#fff' }}>
           {item}
         </Typography>
-         <Typography variant="h3" sx={{ color: '#fff' }}>
+        <Typography variant="h3" sx={{ color: '#fff' }}>
           {role}
         </Typography>
       </Box>
     </Card>
   );
-};
+});
 
 export default SmallCards;

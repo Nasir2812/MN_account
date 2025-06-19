@@ -5,6 +5,7 @@ import React from 'react'
 
 const Table = ({ rows = [], columns = [], height=380 , pageSize = 5, checkboxSelection = true }) => {
 
+    
     const paginationModel = { page: 0, pageSize };
     return (
         <Paper sx={{ height, width: '100%' }}>

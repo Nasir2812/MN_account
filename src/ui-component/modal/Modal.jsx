@@ -14,8 +14,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     },
 }));
 
-const Modal = ({ title, maxWidth, onClose, children, onSubmit, showSubmit = true,
-    loading = false }) => {
+const Modal = ({ title, maxWidth,open, onClose, children }) => {
     return (
         <>
 
@@ -55,20 +54,7 @@ const Modal = ({ title, maxWidth, onClose, children, onSubmit, showSubmit = true
                 </IconButton>
                 <DialogContent dividers>
                     {children}
-                </DialogContent>
-                <DialogActions>
-                    {showSubmit && (
-                        <Button
-                            autoFocus
-                            onClick={onSubmit}
-                            disabled={loading}
-                            startIcon={loading && <CircularLoader size='30px' />}
-                        >
-                            {loading ? <CircularLoader size='30px' /> : 'Submit'}
-                        </Button>
-                    )}
-
-                </DialogActions>
+                </DialogContent> 
             </BootstrapDialog>
         </>
     )

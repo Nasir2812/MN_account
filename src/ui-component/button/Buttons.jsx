@@ -8,6 +8,7 @@ const Buttons = ({
   variant = 'contained',
   color = 'primary',
   fullWidth = false,
+  disable = false,
   loading = false,
   startIcon,
   endIcon,
@@ -21,6 +22,7 @@ const Buttons = ({
         variant={variant}
         color={color}
         fullWidth={fullWidth}
+        disable={disable}
         startIcon={loading ? <CircularLoader size='30px' color="inherit" /> : startIcon}
         endIcon={endIcon}
         disabled={loading}
